@@ -1,6 +1,6 @@
 {
   "name": "@bringg/react-native-bringg-driver-sdk",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "A React Native wrapper for the native (iOS and Android) Bringg driver SDKs (currently supporting the active customer use case)",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -16,8 +16,7 @@
     "react-native-bringg-driver-sdk.podspec"
   ],
   "scripts": {
-    "prepare": "bob build",
-    "release": "release-it"
+    "prepare": "bob build"
   },
   "keywords": [
     "react-native",
@@ -44,7 +43,6 @@
     "prettier": "^2.0.5",
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "release-it": "^13.5.8",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
@@ -79,23 +77,6 @@
     "tabWidth": 2,
     "trailingComma": "es5",
     "useTabs": false
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
-    },
-    "npm": {
-      "publish": true
-    },
-    "github": {
-      "release": true
-    },
-    "plugins": {
-      "@release-it/conventional-changelog": {
-        "preset": "angular"
-      }
-    }
   },
   "@react-native-community/bob": {
     "source": "src",
