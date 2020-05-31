@@ -1,0 +1,112 @@
+{
+  "name": "@bringg/react-native-bringg-driver-sdk",
+  "version": "1.9.0",
+  "description": "A React Native wrapper for the native (iOS and Android) Bringg driver SDKs (currently supporting the active customer use case)",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index.tsx",
+  "source": "src/index.tsx",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "cpp",
+    "react-native-bringg-driver-sdk.podspec"
+  ],
+  "scripts": {
+    "prepare": "bob build",
+    "release": "release-it"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "android"
+  ],
+  "repository": "https://github.com/bringg/ReactNativeBringgDriverSDK",
+  "author": "Bringg <bringg-ios-developers@bringg.com> (https://www.bringg.com)",
+  "license": "CC-BY-NC-SA-4.0",
+  "bugs": {
+    "url": "https://github.com/bringg/ReactNativeBringgDriverSDK/issues"
+  },
+  "homepage": "https://github.com/bringg/ReactNativeBringgDriverSDK#readme",
+  "devDependencies": {
+    "@react-native-community/bob": "^0.14.2",
+    "@react-native-community/eslint-config": "^1.1.0",
+    "@release-it/conventional-changelog": "^1.1.4",
+    "@types/react": "^16.9.19",
+    "@types/react-native": "0.61.5",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "pod-install": "^0.1.0",
+    "prettier": "^2.0.5",
+    "react": "16.9.0",
+    "react-native": "0.61.5",
+    "release-it": "^13.5.8",
+    "typescript": "^3.8.3"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": ">= 0.60.0 < 0.62.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@react-native-community",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "quoteProps": "consistent",
+          "singleQuote": true,
+          "tabWidth": 2,
+          "trailingComma": "es5",
+          "useTabs": false
+        }
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "node_modules/",
+    "lib/"
+  ],
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore: release ${version}",
+      "tagName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    },
+    "github": {
+      "release": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular"
+      }
+    }
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      "commonjs",
+      "module",
+      "typescript"
+    ]
+  },
+  "dependencies": {
+    "rxjs": "^6.5.5"
+  }
+}

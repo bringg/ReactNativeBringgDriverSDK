@@ -1,0 +1,11 @@
+name: ReactNativeBringgDriverSDKIOS
+targets:
+  ReactNativeBringgDriverSDKIOS:
+    type: application
+    sources: ['Sources']
+    platform: iOS
+    deploymentTarget: '11.0'
+    settings:
+      base:
+        INFOPLIST_FILE: 'Sources/Supporting Files/Info.plist'
+        PRODUCT_BUNDLE_IDENTIFIER: 'com.bringg.ReactNativeBringgDriverSDKIOS.workspace'
