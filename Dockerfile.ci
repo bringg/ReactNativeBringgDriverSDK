@@ -1,4 +1,0 @@
-FROM node:10-slim
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends git sudo \
-    && echo “ALL ALL=NOPASSWD: ALL” >> /etc/sudoers
