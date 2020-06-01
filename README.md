@@ -5,13 +5,13 @@ A React Native wrapper for the native (iOS and Android) Bringg driver SDKs (curr
 ## Installation
 
 ```sh
-npm install react-native-bringg-driver-sdk --save
+npm install @bringg/react-native-bringg-driver-sdk --save
 ```
 
 or
 
 ```bash
-yarn add react-native-bringg-driver-sdk
+yarn add @bringg/react-native-bringg-driver-sdk
 ```
 
 ### iOS specific installation
