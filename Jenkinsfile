@@ -6,11 +6,13 @@ pipeline {
 
   stages {
     stage('Build') {
-      script {
-        // package.json should not have private dependencies
-        // we should be able to install dependencies without credentials
-        docker.image('node:12-alpine').inside() {
-          sh "npm install"
+      steps {
+        script {
+          // package.json should not have private dependencies
+          // we should be able to install dependencies without credentials
+          docker.image('node:12-alpine').inside() {
+            sh "npm install"
+          }
         }
       }
     }
