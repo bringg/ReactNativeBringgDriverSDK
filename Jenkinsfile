@@ -5,16 +5,24 @@ pipeline {
   agent any
 
   stages {
+    stage('Build') {
+      steps {
+        script {
+          // package.json should not have private dependencies
+          // we should be able to install dependencies without credentials
+          docker.image('bringg/node:12-alpine').inside() {
+            sh "npm install"
+          }
+        }
+      }
+    }
+
     stage('Deploy') {
       when {
         expression { env.BRANCH_NAME in ['master'] }
       }
 
       steps {
-        // package.json should not have private dependencies
-        // we should be able to install dependencies without credentials
-        sh 'npm install'
-
         withCredentials([string(credentialsId: 'npm-bringg', variable: 'NPM_TOKEN')]) {
           publishNpm(token: env.NPM_TOKEN, public: true)
         }
