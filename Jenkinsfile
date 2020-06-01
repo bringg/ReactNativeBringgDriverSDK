@@ -1,8 +1,8 @@
-// All non-runtime dependencies installed in Dockerfile.ci
+#!groovy
+@Library('ci-scripts') _
+
 pipeline {
-  agent {
-    dockerfile { filename 'Dockerfile.ci' }
-  }
+  agent any
 
   stages {
     stage('Deploy') {
@@ -11,9 +11,13 @@ pipeline {
       }
 
       steps {
-        withCredentials([string(credentialsId: 'npm-bringg', variable: 'NPM_TOKEN')]) { writeFile file: '.npmrc', text: "//registry.npmjs.org/:_authToken=${env.NPM_TOKEN}" }
-        sh 'yarn'
-        sh 'npm publish --access public'
+        // package.json should not have private dependencies
+        // we should be able to install dependencies without credentials
+        sh 'npm install'
+
+        withCredentials([string(credentialsId: 'npm-bringg', variable: 'NPM_TOKEN')]) {
+          publishNpm(token: env.NPM_TOKEN, public: true)
+        }
       }
     }
   }
