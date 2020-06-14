@@ -5,13 +5,14 @@ pipeline {
   agent any
 
   stages {
-    stage('Build') {
+    stage('Build and check lint') {
       steps {
         script {
           // package.json should not have private dependencies
           // we should be able to install dependencies without credentials
           docker.image('bringg/node:12-alpine').inside() {
             sh "npm install"
+            sh "npm run prettier-check"
           }
         }
       }
