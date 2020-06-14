@@ -256,7 +256,7 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-bringg-driver-sdk (1.9.0):
+  - react-native-bringg-driver-sdk (1.9.2):
     - BringgDriverSDK (= 1.9.0)
     - BringgDriverSDKObjc (= 1.9.0)
     - React
@@ -469,7 +469,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-bringg-driver-sdk: 2c571a032ff9c1e9b850353eba99094125269ea1
+  react-native-bringg-driver-sdk: de761478eaf1c79b3895d01be7f2194b15a19dbb
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72

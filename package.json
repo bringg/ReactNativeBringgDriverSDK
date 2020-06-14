@@ -1,6 +1,6 @@
 {
   "name": "@bringg/react-native-bringg-driver-sdk",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "A React Native wrapper for the native (iOS and Android) Bringg driver SDKs (currently supporting the active customer use case)",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -16,7 +16,8 @@
     "react-native-bringg-driver-sdk.podspec"
   ],
   "scripts": {
-    "prepare": "bob build"
+    "prepare": "bob build",
+    "prettier-check": "prettier -l src"
   },
   "keywords": [
     "react-native",
