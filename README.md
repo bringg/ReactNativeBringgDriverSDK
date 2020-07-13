@@ -73,9 +73,8 @@ end
 
 ### Android project configuration
 
-1. Make sure to set the `minSdkVersion` to at least 19.
-2. If your `minSdkVersion` is set to 20 or lower, you must enable multidex [(further instructions)](https://developer.android.com/studio/build/multidex).
-3. Make sure your app meets [Google Play's target API level requirements](https://developer.android.com/distribute/best-practices/develop/target-sdk.html).
+1. Make sure to set the `minSdkVersion` to at least 21.
+2. Make sure your app meets [Google Play's target API level requirements](https://developer.android.com/distribute/best-practices/develop/target-sdk.html).
 
 ## Running the example app
 
