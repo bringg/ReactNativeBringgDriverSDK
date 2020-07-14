@@ -38,7 +38,7 @@ export type ActiveCustomerManagerType = {
 };
 
 export type BringgDriverSDKType = {
-  initBringgDriverSDK: (flags: SDKInitializeFlag[] | null) => Promise<void>;
+  initBringgDriverSDK: (flags?: SDKInitializeFlag[]) => Promise<void>;
   activeCustomerManager: ActiveCustomerManagerType;
 };
 
@@ -49,4 +49,5 @@ export { Customer } from './models/customer';
 export { TaskInventory } from './models/task_inventory';
 export { TaskNote } from './models/task_note';
 export { TransportType } from './models/transport_type';
+export { SDKInitializeFlag } from './consts/SDKInitializeFlag';
 export { initBringgDriverSDK, activeCustomerManager };

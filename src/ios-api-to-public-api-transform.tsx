@@ -27,9 +27,9 @@ export function iosAPIToPublicAPITransform(
   };
 
   const initBringgDriverSDK = async (
-    flags: SDKInitializeFlag[] | null
+    flags?: SDKInitializeFlag[]
   ): Promise<void> => {
-    await bringgDriverSdkIosType.initBringgDriverSDK(flags);
+    await bringgDriverSdkIosType.initBringgDriverSDK(flags ?? null);
     await updateIsLoggedInSubject();
     await updateActiveTaskSubject();
 

@@ -1,4 +1,7 @@
-import { initBringgDriverSDK } from '@bringg/react-native-bringg-driver-sdk';
+import {
+  initBringgDriverSDK,
+  SDKInitializeFlag,
+} from '@bringg/react-native-bringg-driver-sdk';
 
 const state: {
   didInitialize: boolean;
@@ -18,7 +21,13 @@ export function initBringgDriverSDKIfNeeded(): Promise<void> {
   }
 
   console.log('initializing sdk');
-  const initializingPromise = initBringgDriverSDK();
+
+  // Passing initialzation flags allows you to disable SDK features such as using bluetooth and motion
+  // this allows you to show less permission prompts to the user.
+  const initializingPromise = initBringgDriverSDK([
+    SDKInitializeFlag.AvoidUsingBluetooth,
+    SDKInitializeFlag.AvoidUsingMotion,
+  ]);
   state.initializingPromise = initializingPromise;
   return initializingPromise;
 }
