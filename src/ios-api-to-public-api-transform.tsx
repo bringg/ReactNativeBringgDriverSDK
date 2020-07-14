@@ -2,6 +2,7 @@ import { BringgDriverSDKType, ActiveCustomerManagerType } from './index';
 import { BringgDriverSdkIosType } from './ios';
 import { Task } from './models/task';
 import { BehaviorSubject } from 'rxjs';
+import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
 
 // Maps the iOS api to the public api (BringgDriverSdkIosType -> BringgDriverSDKType)
 export function iosAPIToPublicAPITransform(
@@ -25,8 +26,10 @@ export function iosAPIToPublicAPITransform(
     activeTaskSubject.next(activeTask);
   };
 
-  const initBringgDriverSDK = async (): Promise<void> => {
-    await bringgDriverSdkIosType.initBringgDriverSDK();
+  const initBringgDriverSDK = async (
+    flags: SDKInitializeFlag[] | null
+  ): Promise<void> => {
+    await bringgDriverSdkIosType.initBringgDriverSDK(flags);
     await updateIsLoggedInSubject();
     await updateActiveTaskSubject();
 

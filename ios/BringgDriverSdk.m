@@ -11,9 +11,10 @@ RCT_EXPORT_MODULE()
 }
 
 RCT_REMAP_METHOD(initBringgDriverSDK,
-                 initBringgDriverSDKWithResolver:(RCTPromiseResolveBlock)resolve
+                 initBringgDriverSDKWithFlags:(nullable NSArray<NSString *> *)flags
+                 resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTResponseErrorBlock)reject) {
-    NSError *initError = [BringgObjc initializeSDKWithLogger:nil];
+    NSError *initError = [BringgObjc initializeSDKWithLogger:nil bringgSDKInitOptions:[BringgSDKInitOptions fromFlags:flags]];
     if (initError) {
         reject(initError);
     } else {

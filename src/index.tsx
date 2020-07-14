@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { TransportType } from './models/transport_type';
 import { iosAPIToPublicAPITransform } from './ios-api-to-public-api-transform';
 import { androidAPIToPublicAPITransform } from './android-api-to-public-api-transform';
+import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
 
 let bringgDriverSDK: BringgDriverSDKType;
 
@@ -37,7 +38,7 @@ export type ActiveCustomerManagerType = {
 };
 
 export type BringgDriverSDKType = {
-  initBringgDriverSDK: () => Promise<void>;
+  initBringgDriverSDK: (flags: SDKInitializeFlag[] | null) => Promise<void>;
   activeCustomerManager: ActiveCustomerManagerType;
 };
 

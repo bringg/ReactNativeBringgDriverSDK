@@ -2,6 +2,7 @@ import { BringgDriverSDKType, ActiveCustomerManagerType } from './index';
 import { Task } from './models/task';
 import { BehaviorSubject } from 'rxjs';
 import { BringgDriverSdkAndroidType } from './android';
+import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
 
 // Maps the Android api to the public api (BringgDriverSdkAndroidType -> BringgDriverSDKType)
 export function androidAPIToPublicAPITransform(
@@ -22,7 +23,9 @@ export function androidAPIToPublicAPITransform(
   const isLoggedInSubject = new BehaviorSubject<boolean>(false);
   const activeTaskSubject = new BehaviorSubject<Task | null>(null);
 
-  const initBringgDriverSDK = async (): Promise<void> => {
+  const initBringgDriverSDK = async (
+    _: SDKInitializeFlag[] | null
+  ): Promise<void> => {
     await bringgDriverSdkAndroidType.init();
     await addListenerToActiveTask((activeTask) =>
       activeTaskSubject.next(activeTask)

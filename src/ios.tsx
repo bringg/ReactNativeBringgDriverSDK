@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { Task, taskFromJSONString } from './models/task';
 import { TransportType } from './models/transport_type';
+import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
 
 type ActiveCustomerManagerIOSType = {
   // login related
@@ -28,7 +29,7 @@ type ActiveCustomerManagerIOSType = {
 };
 
 export type BringgDriverSdkIosType = {
-  initBringgDriverSDK(): Promise<void>;
+  initBringgDriverSDK(flags: SDKInitializeFlag[] | null): Promise<void>;
   activeCustomerManager: ActiveCustomerManagerIOSType;
 };
 
@@ -38,8 +39,9 @@ export function getIOSNativeModule(): BringgDriverSdkIosType {
     ActiveCustomerManager
   );
 
-  const initBringgDriverSDK: () => Promise<void> =
-    BringgDriverSdk.initBringgDriverSDK;
+  const initBringgDriverSDK: (
+    flags: SDKInitializeFlag[] | null
+  ) => Promise<void> = BringgDriverSdk.initBringgDriverSDK;
 
   const activeCustomerManager: ActiveCustomerManagerIOSType = {
     ...ActiveCustomerManager,

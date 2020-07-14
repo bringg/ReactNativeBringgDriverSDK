@@ -19,6 +19,6 @@ Pod::Spec.new do |s|
 
   s.dependency 'React'
 
-  s.dependency 'BringgDriverSDK', '1.9.0'
-  s.dependency 'BringgDriverSDKObjc', '1.9.0'
+  s.dependency 'BringgDriverSDK', '1.10.0'
+  s.dependency 'BringgDriverSDKObjc', '1.10.0'
 end
