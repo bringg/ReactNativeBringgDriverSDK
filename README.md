@@ -108,3 +108,4 @@ In podfile add to your application target the following pods:
   pod 'BringgDriverSDK', :git => 'https://github.com/bringg/Bringg-iOS-DriverSDK.git', :branch => '1.10.0-xcode-11.3.1'  
   pod 'BringgDriverSDKObjc', :git => 'https://github.com/bringg/Bringg-iOS-DriverSDK.git', :branch => '1.10.0-xcode-11.3.1'
 ```
+You can see an example of this in `/Example/ios/Podfile`

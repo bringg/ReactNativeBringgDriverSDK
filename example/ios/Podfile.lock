@@ -316,8 +316,6 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
-  - BringgDriverSDK (from `https://github.com/bringg/Bringg-iOS-DriverSDK.git`, branch `1.10.0-xcode-11.3.1`)
-  - BringgDriverSDKObjc (from `https://github.com/bringg/Bringg-iOS-DriverSDK.git`, branch `1.10.0-xcode-11.3.1`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -339,7 +337,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - react-native-bringg-driver-sdk (from `../..`)
+  - "react-native-bringg-driver-sdk (from `../node_modules/@bringg/react-native-bringg-driver-sdk`)"
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -357,6 +355,8 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - boost-for-react-native
+    - BringgDriverSDK
+    - BringgDriverSDKObjc
     - CocoaAsyncSocket
     - CocoaLibEvent
     - CryptoSwift
@@ -382,12 +382,6 @@ SPEC REPOS:
     - YogaKit
 
 EXTERNAL SOURCES:
-  BringgDriverSDK:
-    :branch: 1.10.0-xcode-11.3.1
-    :git: https://github.com/bringg/Bringg-iOS-DriverSDK.git
-  BringgDriverSDKObjc:
-    :branch: 1.10.0-xcode-11.3.1
-    :git: https://github.com/bringg/Bringg-iOS-DriverSDK.git
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -417,7 +411,7 @@ EXTERNAL SOURCES:
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-bringg-driver-sdk:
-    :path: "../.."
+    :path: "../node_modules/@bringg/react-native-bringg-driver-sdk"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -443,19 +437,11 @@ EXTERNAL SOURCES:
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
-CHECKOUT OPTIONS:
-  BringgDriverSDK:
-    :commit: 58f8681165c5af2b2a7370251552fb75143f06a5
-    :git: https://github.com/bringg/Bringg-iOS-DriverSDK.git
-  BringgDriverSDKObjc:
-    :commit: 58f8681165c5af2b2a7370251552fb75143f06a5
-    :git: https://github.com/bringg/Bringg-iOS-DriverSDK.git
-
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BringgDriverSDK: 66552a6da282493630274ded01e5fd1d9c7be33a
-  BringgDriverSDKObjc: eec0f92e91ec58dbf80658cbb3136949a396e63e
+  BringgDriverSDK: afc7ea88f080a3614dd782fc7a2ed12406816379
+  BringgDriverSDKObjc: da7114efd9da6c5fc4370287c1c82f04d6d14aa5
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
