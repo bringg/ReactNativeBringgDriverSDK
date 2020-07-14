@@ -1,5 +1,6 @@
 #import "BringgDriverSdk.h"
 
+@import BringgDriverSDK;
 @import BringgDriverSDKObjc;
 
 @implementation BringgDriverSdk
@@ -11,9 +12,11 @@ RCT_EXPORT_MODULE()
 }
 
 RCT_REMAP_METHOD(initBringgDriverSDK,
-                 initBringgDriverSDKWithResolver:(RCTPromiseResolveBlock)resolve
+                 initBringgDriverSDKWithFlags:(nullable NSArray<NSString *> *)flags
+                 resolver:(RCTPromiseResolveBlock)resolve
                  rejecter:(RCTResponseErrorBlock)reject) {
-    NSError *initError = [BringgObjc initializeSDKWithLogger:nil];
+    BringgSDKInitOptions *options = [BringgSDKInitOptions fromFlagsWithFlags:flags];
+    NSError *initError = [BringgObjc initializeSDKWithLogger:nil bringgSDKInitOptions:options];
     if (initError) {
         reject(initError);
     } else {

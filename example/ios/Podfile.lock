@@ -1,9 +1,10 @@
 PODS:
   - Alamofire (4.9.0)
   - boost-for-react-native (1.63.0)
-  - BringgDriverSDK (1.9.0):
+  - BringgDriverSDK (1.10.0):
     - Alamofire (= 4.9.0)
     - CryptoSwift (= 1.0.0)
+    - DeviceKit (= 3.2.0)
     - GzipSwift (= 5.0.0)
     - KeychainAccess (= 3.2.0)
     - Kingfisher (= 5.7.1)
@@ -13,11 +14,12 @@ PODS:
     - Socket.IO-Client-Swift (= 15.1.0)
     - Starscream (= 3.1.0)
     - XCGLogger (= 7.0.0)
-  - BringgDriverSDKObjc (1.9.0):
-    - BringgDriverSDK (= 1.9.0)
+  - BringgDriverSDKObjc (1.10.0):
+    - BringgDriverSDK (= 1.10.0)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
   - CryptoSwift (1.0.0)
+  - DeviceKit (3.2.0)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.61.5)
   - FBReactNativeSpec (0.61.5):
@@ -256,9 +258,9 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-bringg-driver-sdk (1.9.2):
-    - BringgDriverSDK (= 1.9.0)
-    - BringgDriverSDKObjc (= 1.9.0)
+  - react-native-bringg-driver-sdk (1.10.0):
+    - BringgDriverSDK (= 1.10.0)
+    - BringgDriverSDKObjc (= 1.10.0)
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -300,7 +302,7 @@ PODS:
   - Realm/Headers (4.4.1)
   - RealmSwift (4.4.1):
     - Realm (= 4.4.1)
-  - RNDateTimePicker (2.4.0):
+  - RNDateTimePicker (2.6.0):
     - React
   - Socket.IO-Client-Swift (15.1.0):
     - Starscream (~> 3.1)
@@ -358,6 +360,7 @@ SPEC REPOS:
     - CocoaAsyncSocket
     - CocoaLibEvent
     - CryptoSwift
+    - DeviceKit
     - Flipper
     - Flipper-DoubleConversion
     - Flipper-Folly
@@ -442,6 +445,7 @@ SPEC CHECKSUMS:
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  DeviceKit: d081659419cce07c0b5239dbc9fb39ed7413c7fe
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
   FBLazyVector: aaeaf388755e4f29cd74acbc9e3b8da6d807c37f
   FBReactNativeSpec: 118d0d177724c2d67f08a59136eb29ef5943ec75
@@ -469,7 +473,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-bringg-driver-sdk: de761478eaf1c79b3895d01be7f2194b15a19dbb
+  react-native-bringg-driver-sdk: 8042b37cff867e53fb69676613af2d2e06dd25bc
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -482,13 +486,13 @@ SPEC CHECKSUMS:
   ReactCommon: 198c7c8d3591f975e5431bec1b0b3b581aa1c5dd
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
-  RNDateTimePicker: c4285bfdd87430f1e575b81a4742b7586a09d53e
+  RNDateTimePicker: 8784fb27ddd12a9f0eaf6d994bfe3892f0f319cf
   Socket.IO-Client-Swift: 7cb44c0ffb86e158cee32d0642d30ec5fdcf8f61
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
   XCGLogger: 0434f15e3909cdc450bb63faf638b8792ab782ab
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: ab4800b35191462fe2ed6f27347c9fdbec71d199
+PODFILE CHECKSUM: bff3406fd5576c5081204396d3b22c68f17d5608
 
 COCOAPODS: 1.9.1

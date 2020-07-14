@@ -57,6 +57,10 @@ target 'BringgDriverSdkIosExample' do
   pod 'glog', podspec: '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', podspec: '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  # For using Xcode 11.3.1, uncomment the following two lines
+  # pod 'BringgDriverSDK', :git => 'https://github.com/bringg/Bringg-iOS-DriverSDK.git', :branch => '1.10.0-xcode-11.3.1'
+  # pod 'BringgDriverSDKObjc', :git => 'https://github.com/bringg/Bringg-iOS-DriverSDK.git', :branch => '1.10.0-xcode-11.3.1'
+
   use_native_modules!
 
   # Enables Flipper.
