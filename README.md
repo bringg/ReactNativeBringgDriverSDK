@@ -99,3 +99,12 @@ yarn android
 
 Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 [More details](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+
+## Running with xcode 11.3.1 (iOS)
+The Native iOS SDK is precompiled - when using a swift version that is not the latest, you will need to do another step in order to use a native SDK that was compiled with the same Swift version that you are using.
+
+In podfile add to your application target the following pods:
+```ruby
+  pod 'BringgDriverSDK', :git => 'https://github.com/bringg/Bringg-iOS-DriverSDK.git', :branch => '1.10.0-xcode-11.3.1'  
+  pod 'BringgDriverSDKObjc', :git => 'https://github.com/bringg/Bringg-iOS-DriverSDK.git', :branch => '1.10.0-xcode-11.3.1'
+```
