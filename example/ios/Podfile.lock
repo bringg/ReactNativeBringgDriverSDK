@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.9.0)
   - boost-for-react-native (1.63.0)
-  - BringgDriverSDK (1.10.0):
+  - BringgDriverSDK (1.10.1):
     - Alamofire (= 4.9.0)
     - CryptoSwift (= 1.0.0)
     - DeviceKit (= 3.2.0)
@@ -14,8 +14,8 @@ PODS:
     - Socket.IO-Client-Swift (= 15.1.0)
     - Starscream (= 3.1.0)
     - XCGLogger (= 7.0.0)
-  - BringgDriverSDKObjc (1.10.0):
-    - BringgDriverSDK (= 1.10.0)
+  - BringgDriverSDKObjc (1.10.1):
+    - BringgDriverSDK (= 1.10.1)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
   - CryptoSwift (1.0.0)
@@ -258,9 +258,9 @@ PODS:
     - React-cxxreact (= 0.61.5)
     - React-jsi (= 0.61.5)
   - React-jsinspector (0.61.5)
-  - react-native-bringg-driver-sdk (1.10.0):
-    - BringgDriverSDK (= 1.10.0)
-    - BringgDriverSDKObjc (= 1.10.0)
+  - react-native-bringg-driver-sdk (1.10.1):
+    - BringgDriverSDK (= 1.10.1)
+    - BringgDriverSDKObjc (= 1.10.1)
     - React
   - React-RCTActionSheet (0.61.5):
     - React-Core/RCTActionSheetHeaders (= 0.61.5)
@@ -337,7 +337,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
-  - "react-native-bringg-driver-sdk (from `../node_modules/@bringg/react-native-bringg-driver-sdk`)"
+  - react-native-bringg-driver-sdk (from `../..`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -411,7 +411,7 @@ EXTERNAL SOURCES:
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-bringg-driver-sdk:
-    :path: "../node_modules/@bringg/react-native-bringg-driver-sdk"
+    :path: "../.."
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -440,8 +440,8 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BringgDriverSDK: afc7ea88f080a3614dd782fc7a2ed12406816379
-  BringgDriverSDKObjc: da7114efd9da6c5fc4370287c1c82f04d6d14aa5
+  BringgDriverSDK: a23ce0e8723ee393c659988a141d08e96d4ee21d
+  BringgDriverSDKObjc: 32e3afa55f44174e85e47a39101fd17fa9ff245a
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
@@ -473,7 +473,7 @@ SPEC CHECKSUMS:
   React-jsi: cb2cd74d7ccf4cffb071a46833613edc79cdf8f7
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
-  react-native-bringg-driver-sdk: 8042b37cff867e53fb69676613af2d2e06dd25bc
+  react-native-bringg-driver-sdk: dcb6ff0d8f4add2533a562744ff83b848b84a969
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
   React-RCTBlob: d89293cc0236d9cb0933d85e430b0bbe81ad1d72
@@ -493,6 +493,6 @@ SPEC CHECKSUMS:
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: bff3406fd5576c5081204396d3b22c68f17d5608
+PODFILE CHECKSUM: 462b00af42569722a69f3a1ddcd71b3c48489b93
 
 COCOAPODS: 1.9.1
