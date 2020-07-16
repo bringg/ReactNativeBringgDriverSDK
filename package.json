@@ -1,6 +1,6 @@
 {
   "name": "@bringg/react-native-bringg-driver-sdk",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "A React Native wrapper for the native (iOS and Android) Bringg driver SDKs (currently supporting the active customer use case)",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
