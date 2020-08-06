@@ -79,17 +79,18 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
 
   @ReactMethod
   fun loginWithToken(token: String, secret: String, region: String, promise: Promise) {
-    if (rejectIfNotInitialized(promise))
-      return
-
-    activeCustomerClient?.getActiveCustomerActions()?.login(token, secret, region, object : ResultCallback<LoginResult> {
-      override fun onResult(result: LoginResult) {
-        if (result.success())
-          promise.resolve()
-        else
-          promise.reject(RequestFailedException(result))
+      if (rejectIfNotInitialized(promise))
+          return
+      runOnMainThread {
+          activeCustomerClient?.getActiveCustomerActions()?.login(token, secret, region, object : ResultCallback<LoginResult> {
+                  override fun onResult(result: LoginResult) {
+                      if (result.success())
+                          promise.resolve()
+                      else
+                          promise.reject(RequestFailedException(result.name()))
+                  }
+              })
       }
-    })
   }
 
   @ReactMethod
@@ -103,7 +104,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
           if (result.success())
             promise.resolve()
           else
-            promise.reject(RequestFailedException(result))
+            promise.reject(RequestFailedException(result.name()))
         }
       })
     }
@@ -119,7 +120,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
         if (result.success())
           promise.resolve()
         else
-          promise.reject(RequestFailedException(result.result))
+          promise.reject(RequestFailedException(result.result.name()))
       }
     })
   }
@@ -171,7 +172,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
         if (result.isSuccessful)
           promise.resolve()
         else
-          promise.reject(RequestFailedException(result.error))
+          promise.reject(RequestFailedException(result.error?.name()))
       }
     })
   }
@@ -192,7 +193,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
         if (result.success())
           promise.resolve()
         else {
-          promise.reject(RequestFailedException(result.error()))
+          promise.reject(RequestFailedException(result.error()?.name()))
         }
       }
     })
@@ -220,6 +221,6 @@ fun String.toDate() = try {
 
 // errors
 class NotInitializedException() : Exception("SDK not initialized. Please call init() before using any other apis")
-class RequestFailedException(message: String) : Exception(message) {
-  constructor(enum: Enum<*>?) : this(enum?.name?.replace('_', ' ')?.toLowerCase(Locale.US)?.capitalize() ?: "Request failed")
-}
+class RequestFailedException(message: String?) : Exception(
+        message?.replace('_', ' ')?.toLowerCase(Locale.US)?.capitalize() ?: "Request failed"
+)
