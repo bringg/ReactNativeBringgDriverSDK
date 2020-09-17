@@ -11,12 +11,10 @@ import driver_sdk.BringgSdkActiveCustomerClient
 import driver_sdk.connection.NetworkResult
 import driver_sdk.content.ResultCallback
 import driver_sdk.customer.SdkSettings
-import driver_sdk.gson.util.GsonUtil
 import driver_sdk.models.TaskState
 import driver_sdk.models.enums.LoginResult
 import driver_sdk.models.enums.LogoutResult
 import driver_sdk.models.enums.TransportType
-import driver_sdk.models.parsers.TaskJSONSerializer
 import driver_sdk.runOnMainThread
 import driver_sdk.tasks.ArriveWaypointResult
 import driver_sdk.tasks.LeaveWaypointResult
@@ -42,7 +40,10 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
 
   private val activeTaskObserver: Observer<TaskState> by lazy {
     Observer<TaskState> {
-      emit("activeTask", TaskJSONSerializer.serializeToJSONObject(it.task, GsonUtil.getGson())?.toString())
+      val activeTaskJson = it.task?.let { task ->
+        activeCustomerClient?.taskSerializer?.serializeToJson(task.getId())
+      }
+      emit("activeTask", activeTaskJson?.toString())
     }
   }
 
