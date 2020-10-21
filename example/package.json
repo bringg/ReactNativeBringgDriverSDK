@@ -9,10 +9,10 @@
     "start": "react-native start"
   },
   "dependencies": {
+    "@bringg/react-native-bringg-driver-sdk": "file:..",
     "@react-native-community/datetimepicker": "^2.4.0",
-    "react": "16.9.0",
-    "react-native": "0.61.5",
-    "@bringg/react-native-bringg-driver-sdk": "file:.."
+    "react": "^16.13.1",
+    "react-native": "^0.63.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -21,6 +21,8 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "prettier": "^2.0.4",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "babel-jest": "^25.1.0",
+    "react-test-renderer": "16.13.1"
   }
 }
