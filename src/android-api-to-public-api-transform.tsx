@@ -3,6 +3,7 @@ import { Task } from './models/task';
 import { BehaviorSubject } from 'rxjs';
 import { BringgDriverSdkAndroidType } from './android';
 import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
+import { CustomerVehicle } from './models/customer_vehicle';
 
 // Maps the Android api to the public api (BringgDriverSdkAndroidType -> BringgDriverSDKType)
 export function androidAPIToPublicAPITransform(
@@ -13,6 +14,8 @@ export function androidAPIToPublicAPITransform(
     startTask,
     loginWithToken,
     arriveAtWaypoint,
+    arriveAtWaypointWithCustomerVehicle,
+    arriveAtWaypointWithCustomerVehicleAndVehicleId,
     leaveWaypoint,
     updateWaypointEta,
     addListenerToActiveTask,
@@ -48,6 +51,30 @@ export function androidAPIToPublicAPITransform(
     },
     activeTask: activeTaskSubject,
     setUserTransportType,
+    arriveAtWaypointWithCustomerVehicle: (
+      customerVehicle: CustomerVehicle
+    ): Promise<void> => {
+      if (customerVehicle.id == null) {
+        console.info("Arrive at waypoint with customer vehicle (empty vehicle id)");
+        return arriveAtWaypointWithCustomerVehicle(
+          customerVehicle.save_vehicle,
+          customerVehicle.license_plate,
+          customerVehicle.color,
+          customerVehicle.model,
+          customerVehicle.parking_spot
+        );
+      } else {
+        console.info("Arrive at waypoint with customer vehicle");
+        return arriveAtWaypointWithCustomerVehicleAndVehicleId(
+          customerVehicle.id,
+          customerVehicle.save_vehicle,
+          customerVehicle.license_plate,
+          customerVehicle.color,
+          customerVehicle.model,
+          customerVehicle.parking_spot
+        );
+      }
+    },
   };
   return { initBringgDriverSDK, activeCustomerManager };
 }

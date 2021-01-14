@@ -1,6 +1,6 @@
 {
   "name": "@bringg/react-native-bringg-driver-sdk",
-  "version": "1.13.1",
+  "version": "1.13.2",
   "description": "A React Native wrapper for the native (iOS and Android) Bringg driver SDKs (currently supporting the active customer use case)",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -43,7 +43,7 @@
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
-    "react-native": "^0.63.3",
+    "react-native": "^0.63.4",
     "typescript": "^3.8.3",
     "babel-jest": "^25.1.0"
   },

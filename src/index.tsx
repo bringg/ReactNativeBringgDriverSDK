@@ -4,6 +4,7 @@ import { Platform } from 'react-native';
 import { Task } from './models/task';
 import { BehaviorSubject } from 'rxjs';
 import { TransportType } from './models/transport_type';
+import { CustomerVehicle } from './models/customer_vehicle';
 import { iosAPIToPublicAPITransform } from './ios-api-to-public-api-transform';
 import { androidAPIToPublicAPITransform } from './android-api-to-public-api-transform';
 import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
@@ -29,6 +30,7 @@ export type ActiveCustomerManagerType = {
   // task related
   startTask(taskId: number): Promise<void>;
   arriveAtWaypoint(): Promise<void>;
+  arriveAtWaypointWithCustomerVehicle(customerVehicle: CustomerVehicle): Promise<void>;
   leaveWaypoint(): Promise<void>;
   updateWaypointETA(eta: Date): Promise<void>;
 

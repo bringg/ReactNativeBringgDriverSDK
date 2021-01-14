@@ -18,6 +18,21 @@ type ActiveCustomerManagerIOSType = {
   // task related
   startTask(taskId: number): Promise<void>;
   arriveAtWaypoint(): Promise<void>;
+  arriveAtWaypointWithCustomerVehicle(
+    saveVehicle: boolean, //Verify null
+    licensePlate: String | null,
+    color: String | null,
+    model: String | null,
+    parkingSpot: String | null
+  ): Promise<void>;
+  arriveAtWaypointWithCustomerVehicleAndVehicleId(
+    vehicleId: number,
+    saveVehicle: boolean, //Verify null
+    licensePlate: String | null,
+    color: String | null,
+    model: String | null,
+    parkingSpot: String | null
+  ): Promise<void>;
   leaveWaypoint(): Promise<void>;
   updateWaypointETA(eta: Date): Promise<void>;
 
