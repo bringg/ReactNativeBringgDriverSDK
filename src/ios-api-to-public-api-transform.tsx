@@ -68,7 +68,9 @@ export function iosAPIToPublicAPITransform(
       customerVehicle: CustomerVehicle
     ): Promise<void> => {
       if (customerVehicle.id == null) {
-        console.info("Arrive at waypoint with customer vehicle (empty vehicle id)");
+        console.info(
+          'Arrive at waypoint with customer vehicle (empty vehicle id)'
+        );
         return bringgDriverSdkIosType.activeCustomerManager.arriveAtWaypointWithCustomerVehicle(
           customerVehicle.save_vehicle,
           customerVehicle.license_plate,
@@ -77,7 +79,7 @@ export function iosAPIToPublicAPITransform(
           customerVehicle.parking_spot
         );
       } else {
-        console.info("Arrive at waypoint with customer vehicle");
+        console.info('Arrive at waypoint with customer vehicle');
         return bringgDriverSdkIosType.activeCustomerManager.arriveAtWaypointWithCustomerVehicleAndVehicleId(
           customerVehicle.id,
           customerVehicle.save_vehicle,

@@ -55,7 +55,9 @@ export function androidAPIToPublicAPITransform(
       customerVehicle: CustomerVehicle
     ): Promise<void> => {
       if (customerVehicle.id == null) {
-        console.info("Arrive at waypoint with customer vehicle (empty vehicle id)");
+        console.info(
+          'Arrive at waypoint with customer vehicle (empty vehicle id)'
+        );
         return arriveAtWaypointWithCustomerVehicle(
           customerVehicle.save_vehicle,
           customerVehicle.license_plate,
@@ -64,7 +66,7 @@ export function androidAPIToPublicAPITransform(
           customerVehicle.parking_spot
         );
       } else {
-        console.info("Arrive at waypoint with customer vehicle");
+        console.info('Arrive at waypoint with customer vehicle');
         return arriveAtWaypointWithCustomerVehicleAndVehicleId(
           customerVehicle.id,
           customerVehicle.save_vehicle,

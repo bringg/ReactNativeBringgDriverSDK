@@ -30,7 +30,9 @@ export type ActiveCustomerManagerType = {
   // task related
   startTask(taskId: number): Promise<void>;
   arriveAtWaypoint(): Promise<void>;
-  arriveAtWaypointWithCustomerVehicle(customerVehicle: CustomerVehicle): Promise<void>;
+  arriveAtWaypointWithCustomerVehicle(
+    customerVehicle: CustomerVehicle
+  ): Promise<void>;
   leaveWaypoint(): Promise<void>;
   updateWaypointETA(eta: Date): Promise<void>;
 
