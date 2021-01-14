@@ -16,6 +16,7 @@ enum ButtonType {
   SubmitETA = 'submit eta',
   ShowHideEditTransportType = 'show hide transport type',
   SubmitTransportType = 'submit transport type',
+  ShowHideParkingAndVehicleDetails = 'show hide parking and vehicle details',
 }
 
 export type ButtonDef = {
@@ -177,6 +178,26 @@ export const leaveWaypointButtonDef: ButtonDef = {
       .then(() => console.log('Finished leave waypoint'));
   },
 };
+
+export const showHideArriveAtWaypointWithParkingAndVehicleDetailsButtonDef = (
+  isShowingParkingAndVehicleDetails: boolean,
+  setIsShowingParkingAndVehicleDetails: (value: SetStateAction<boolean>) => void
+): ButtonDef => {
+  return {
+    key: ButtonType.ShowHideParkingAndVehicleDetails,
+    title:
+      isShowingParkingAndVehicleDetails
+        ? 'Cancel Set parking details'
+        : 'Arrive at waypoint + parking details',
+    onPress: () => {
+      setIsShowingParkingAndVehicleDetails(!isShowingParkingAndVehicleDetails);
+    },
+    isShowHide: true,
+  };
+}
+
+
+
 
 export function ActionButton(buttonDef: ButtonDef) {
   return (

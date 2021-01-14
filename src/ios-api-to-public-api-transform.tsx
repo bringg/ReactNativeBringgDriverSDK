@@ -3,6 +3,7 @@ import { BringgDriverSdkIosType } from './ios';
 import { Task } from './models/task';
 import { BehaviorSubject } from 'rxjs';
 import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
+import { CustomerVehicle } from './models/customer_vehicle';
 
 // Maps the iOS api to the public api (BringgDriverSdkIosType -> BringgDriverSDKType)
 export function iosAPIToPublicAPITransform(
@@ -61,6 +62,32 @@ export function iosAPIToPublicAPITransform(
       } catch (error) {
         await updateIsLoggedInSubject();
         throw error;
+      }
+    },
+    arriveAtWaypointWithCustomerVehicle: async (
+      customerVehicle: CustomerVehicle
+    ): Promise<void> => {
+      if (customerVehicle.id == null) {
+        console.info(
+          'Arrive at waypoint with customer vehicle (empty vehicle id)'
+        );
+        return bringgDriverSdkIosType.activeCustomerManager.arriveAtWaypointWithCustomerVehicle(
+          customerVehicle.save_vehicle,
+          customerVehicle.license_plate,
+          customerVehicle.color,
+          customerVehicle.model,
+          customerVehicle.parking_spot
+        );
+      } else {
+        console.info('Arrive at waypoint with customer vehicle');
+        return bringgDriverSdkIosType.activeCustomerManager.arriveAtWaypointWithCustomerVehicleAndVehicleId(
+          customerVehicle.id,
+          customerVehicle.save_vehicle,
+          customerVehicle.license_plate,
+          customerVehicle.color,
+          customerVehicle.model,
+          customerVehicle.parking_spot
+        );
       }
     },
   };

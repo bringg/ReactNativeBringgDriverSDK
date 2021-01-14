@@ -10,6 +10,7 @@ import driver_sdk.ActiveCustomerSdkFactory
 import driver_sdk.BringgSdkActiveCustomerClient
 import driver_sdk.connection.NetworkResult
 import driver_sdk.content.ResultCallback
+import driver_sdk.customer.CustomerVehicle
 import driver_sdk.customer.SdkSettings
 import driver_sdk.models.TaskState
 import driver_sdk.models.enums.LoginResult
@@ -137,6 +138,36 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
           promise.resolve()
         else
           promise.reject(RequestFailedException("Failed to arrive to waypoint"))
+      }
+    })
+  }
+
+  @ReactMethod
+  fun arriveAtWaypointWithCustomerVehicle(saveVehicle: Boolean, licensePlate: String?, color: String?, model: String?, parkingSpot: String?, promise: Promise) {
+    if (rejectIfNotInitialized(promise))
+      return
+    val customerVehicle = CustomerVehicle(null, saveVehicle, licensePlate, color, model, parkingSpot)
+    return arriveAtWaypointWithCustomerVehicle(customerVehicle, promise)
+  }
+
+  @ReactMethod
+  fun arriveAtWaypointWithCustomerVehicleAndVehicleId(vehicleId: Double, saveVehicle: Boolean, licensePlate: String?, color: String?, model: String?, parkingSpot: String?, promise: Promise) {
+    if (rejectIfNotInitialized(promise))
+      return
+    val customerVehicle = CustomerVehicle(vehicleId.toLong(), saveVehicle, licensePlate, color, model, parkingSpot)
+    return arriveAtWaypointWithCustomerVehicle(customerVehicle, promise)
+  }
+
+  private fun arriveAtWaypointWithCustomerVehicle(customerVehicle: CustomerVehicle, promise: Promise)
+  {
+    if (rejectIfNotInitialized(promise))
+      return
+    activeCustomerClient?.getActiveCustomerActions()?.arriveToWaypoint(customerVehicle, object : ResultCallback<ArriveWaypointResult> {
+      override fun onResult(result: ArriveWaypointResult) {
+        if (result.success())
+          promise.resolve()
+        else
+          promise.reject(RequestFailedException("Failed to arrive to waypoint " + result.resultCode))
       }
     })
   }

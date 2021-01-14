@@ -12,6 +12,21 @@ export type BringgDriverSdkAndroidType = {
 
   startTask(id: number): Promise<void>;
   arriveAtWaypoint(): Promise<void>;
+  arriveAtWaypointWithCustomerVehicle(
+    saveVehicle: boolean,
+    licensePlate: String | null,
+    color: String | null,
+    model: String | null,
+    parkingSpot: String | null
+  ): Promise<void>;
+  arriveAtWaypointWithCustomerVehicleAndVehicleId(
+    vehicleId: number,
+    saveVehicle: boolean,
+    licensePlate: String | null,
+    color: String | null,
+    model: String | null,
+    parkingSpot: String | null
+  ): Promise<void>;
   leaveWaypoint(): Promise<void>;
   updateWaypointEta(eta: string): Promise<void>;
 

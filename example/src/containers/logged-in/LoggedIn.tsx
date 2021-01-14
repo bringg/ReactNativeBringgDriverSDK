@@ -3,6 +3,7 @@ import React, { useState, Fragment } from 'react';
 import {
   TransportType,
   TaskStatus,
+  activeCustomerManager,
 } from '@bringg/react-native-bringg-driver-sdk';
 import {
   ButtonDef,
@@ -14,14 +15,18 @@ import {
   startTaskButtonDef,
   logoutButtonDef,
   arriveAtWaypointButtonDef,
+  showHideArriveAtWaypointWithParkingAndVehicleDetailsButtonDef,
   ActionButton,
 } from '../../components/ActionButton';
 import { FlatList } from 'react-native';
 
 import EditETAPicker from './EditETAPicker';
 import EditTransportTypePicker from './EditTransportTypePicker';
+import ParkingAndVehicleDetails from './ParkingAndVehicleDetails';
+
 
 export default function LoggedIn() {
+
   const activeTask = useActiveTask();
 
   const [isShowingEditETA, setIsShowingEditETA] = useState(false);
@@ -31,11 +36,14 @@ export default function LoggedIn() {
   const [transportType, setTransportType] = useState<TransportType | null>(
     null
   );
+  const [isShowingParkingAndVehicleDetails, setIsShowingParkingAndVehicleDetails] = useState(false);
+  const [customerVehicle, setCustomerVehicle] = useState({save_vehicle: false});
 
-  const isShowingEditorViews = isShowingEditETA || isShowingTransportType;
+  const isShowingEditorViews = isShowingEditETA || isShowingTransportType || isShowingParkingAndVehicleDetails;
 
   const listData: ButtonDef[] = [];
   if (activeTask) {
+    console.info("Task status " + activeTask.status);
     switch (activeTask.status) {
       case TaskStatus.onTheWay:
         if (!isShowingEditorViews) {
@@ -43,8 +51,15 @@ export default function LoggedIn() {
           // Should allow the customer to report arrival to the pickup point
           listData.push(arriveAtWaypointButtonDef);
         }
-
-        if (!isShowingTransportType) {
+        if (!isShowingTransportType && !isShowingEditETA) {
+          listData.push(
+            showHideArriveAtWaypointWithParkingAndVehicleDetailsButtonDef(
+              isShowingParkingAndVehicleDetails,
+              setIsShowingParkingAndVehicleDetails
+            )
+          );
+        }
+        if (!isShowingTransportType && !isShowingParkingAndVehicleDetails) {
           listData.push(
             // When a customer doesnt allow an app to track his location, we might want to
             // allow him/her to manually update the estimated time of arrival to the pickup location (waypoint)
@@ -55,7 +70,7 @@ export default function LoggedIn() {
             )
           );
         }
-        if (!isShowingEditETA) {
+        if (!isShowingEditETA && !isShowingParkingAndVehicleDetails) {
           // If a customer allows location tracking, we might want to allow him/her to
           // manually update the transport type (cycling, walking...) for more accurate eta calculation
           listData.push(
@@ -112,6 +127,20 @@ export default function LoggedIn() {
         <EditTransportTypePicker
           transportType={transportType}
           setTransportType={setTransportType}
+        />
+      )}
+      {isShowingParkingAndVehicleDetails && (
+        <ParkingAndVehicleDetails
+          customerVehicle={customerVehicle}
+          setCustomerVehicle={setCustomerVehicle}
+          reportArriveAtWaypoint={(customerVehicle) => {
+            setIsShowingParkingAndVehicleDetails(false)
+            console.log('Performing arrive at waypoint with parking and vehicle details' + JSON.stringify(customerVehicle)); //TODO: to string [object object]
+            activeCustomerManager
+              .arriveAtWaypointWithCustomerVehicle(customerVehicle)
+              .catch(console.warn)
+              .then(() => console.log('Finished arrive at waypoint with customer vehicle'));
+          }}
         />
       )}
     </Fragment>
