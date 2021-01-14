@@ -33,7 +33,6 @@ const ParkingAndVehicleDetails: SFC<Props> = (props) => {
           });
         }}
         defaultValue={''}
-        // value={customerVehicle.id}
       />
       <TextInput
         style={{ height: 40 }}
@@ -49,7 +48,6 @@ const ParkingAndVehicleDetails: SFC<Props> = (props) => {
           });
         }}
         defaultValue={''}
-        // value={customerVehicle.license_plate}
       />
       <TextInput
         style={{ height: 40 }}
@@ -65,7 +63,6 @@ const ParkingAndVehicleDetails: SFC<Props> = (props) => {
           });
         }}
         defaultValue={''}
-        // value={customerVehicle.color}
       />
       <TextInput
         style={{ height: 40 }}
@@ -81,7 +78,6 @@ const ParkingAndVehicleDetails: SFC<Props> = (props) => {
           });
         }}
         defaultValue={''}
-        // value={customerVehicle.model}
       />
       <TextInput
         style={{ height: 40 }}
@@ -97,7 +93,6 @@ const ParkingAndVehicleDetails: SFC<Props> = (props) => {
           });
         }}
         defaultValue={''}
-        // value={customerVehicle.parking_spot}
       />
       <ActionButton
         key={'Submit Vehicle Details'}

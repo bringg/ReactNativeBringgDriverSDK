@@ -19,7 +19,7 @@ type ActiveCustomerManagerIOSType = {
   startTask(taskId: number): Promise<void>;
   arriveAtWaypoint(): Promise<void>;
   arriveAtWaypointWithCustomerVehicle(
-    saveVehicle: boolean, //Verify null
+    saveVehicle: boolean,
     licensePlate: String | null,
     color: String | null,
     model: String | null,
@@ -27,7 +27,7 @@ type ActiveCustomerManagerIOSType = {
   ): Promise<void>;
   arriveAtWaypointWithCustomerVehicleAndVehicleId(
     vehicleId: number,
-    saveVehicle: boolean, //Verify null
+    saveVehicle: boolean,
     licensePlate: String | null,
     color: String | null,
     model: String | null,
