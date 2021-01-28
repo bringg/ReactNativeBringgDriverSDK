@@ -27,9 +27,10 @@ export function androidAPIToPublicAPITransform(
   const activeTaskSubject = new BehaviorSubject<Task | null>(null);
 
   const initBringgDriverSDK = async (
-    _?: SDKInitializeFlag[]
+    flags?: SDKInitializeFlag[]
   ): Promise<void> => {
-    await bringgDriverSdkAndroidType.init();
+    console.log('init with flags ' + flags);
+    await bringgDriverSdkAndroidType.init(flags ?? null);
     await addListenerToActiveTask((activeTask) =>
       activeTaskSubject.next(activeTask)
     );
