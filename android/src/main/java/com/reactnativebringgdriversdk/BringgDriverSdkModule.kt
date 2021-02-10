@@ -158,7 +158,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
         if (result.success())
           promise.resolve()
         else
-          promise.reject(RequestFailedException("Failed to arrive to waypoint"))
+          promise.reject(RequestFailedException("Failed to arrive to waypoint " + result.resultCode))
       }
     })
   }
@@ -203,7 +203,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
         if (result.success())
           promise.resolve()
         else
-          promise.reject(RequestFailedException("Failed to leave waypoint"))
+          promise.reject(RequestFailedException("Failed to leave waypoint " + result.resultCode))
       }
     })
 

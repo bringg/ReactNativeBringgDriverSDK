@@ -18,7 +18,6 @@ Pod::Spec.new do |s|
   s.source_files = 'ios/**/*.{h,m,mm}'
 
   s.dependency 'React'
-
-  s.dependency 'BringgDriverSDK', '1.116.0'
-  s.dependency 'BringgDriverSDKObjc', '1.116.0'
+  
+  s.dependency 'BringgDriverSDKObjc', '1.116.1'
 end

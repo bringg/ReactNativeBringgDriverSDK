@@ -1,10 +1,9 @@
 #import "ActiveCustomerManager.h"
 #import "Consts.h"
 
-@import BringgDriverSDK;
 @import BringgDriverSDKObjc;
 
-@interface ActiveCustomerManager() <ActiveCustomerManagerDelegate>
+@interface ActiveCustomerManager() <ActiveCustomerManagerObjcDelegate>
 
 @property (assign, nonatomic) BOOL isObserving;
 
@@ -84,6 +83,26 @@ RCT_REMAP_METHOD(arriveAtWaypoint,
 
 }
 
+RCT_REMAP_METHOD(arriveAtWaypointWithCustomerVehicle,
+                 arriveAtWaypointWithCustomerVehicleSaveVehicle:(BOOL)saveVehicle licensePlate:(nullable NSString *)licensePlate color:(nullable NSString *)color model:(nullable NSString *)model parkingSpot:(nullable NSString *)parkingSpot resolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTResponseErrorBlock)reject) {
+
+    REJECT_IF_SDK_NOT_INITIALIZED
+    CustomerVehicleObjc *customerVehicle = [[CustomerVehicleObjc alloc] initWithSaveVehicle:saveVehicle licensePlate:licensePlate color:color model:model parkingSpot:parkingSpot];
+    [BringgObjc.shared.activeCustomerManager arriveAtWaypointWithCustomerVehicle:customerVehicle completion:OPTIONAL_ERROR_COMPLETION];
+}
+
+RCT_REMAP_METHOD(arriveAtWaypointWithCustomerVehicleAndVehicleId,
+                 arriveAtWaypointWithCustomerVehicleAndVehicleId:(nonnull NSNumber *)vehicleId saveVehicle:(BOOL)saveVehicle licensePlate:(nullable NSString *)licensePlate color:(nullable NSString *)color model:(nullable NSString *)model parkingSpot:(nullable NSString *)parkingSpot resolver:(RCTPromiseResolveBlock)resolve
+                 withRejecter:(RCTResponseErrorBlock)reject) {
+
+    REJECT_IF_SDK_NOT_INITIALIZED
+    CustomerVehicleObjc *customerVehicle = [[CustomerVehicleObjc alloc] initWithId:vehicleId.integerValue saveVehicle:saveVehicle licensePlate:licensePlate color:color model:model parkingSpot:parkingSpot];
+    [BringgObjc.shared.activeCustomerManager arriveAtWaypointWithCustomerVehicle:customerVehicle completion:OPTIONAL_ERROR_COMPLETION];
+}
+
+
+
 RCT_REMAP_METHOD(leaveWaypoint,
                  leaveWaypointWithResolver:(RCTPromiseResolveBlock)resolve
                  withRejecter:(RCTResponseErrorBlock)reject) {
@@ -108,7 +127,7 @@ RCT_REMAP_METHOD(getActiveTask,
                  withRejecter:(RCTResponseErrorBlock)reject) {
 
     REJECT_IF_SDK_NOT_INITIALIZED
-    Task *activeTask = BringgObjc.shared.activeCustomerManager.activeTask;
+    TaskObjc *activeTask = BringgObjc.shared.activeCustomerManager.activeTask;
     
     if (!activeTask) {
         resolve(nil);
@@ -169,7 +188,7 @@ RCT_REMAP_METHOD(setUserTransportType,
     [self sendEventWithName:@"activeCustomerManagerDidLogout" body:nil];
 }
 
-- (void)activeCustomerManagerActiveTaskUpdated:(id<ActiveCustomerManagerProtocol>)sender {
+- (void)activeCustomerManagerActiveTaskUpdated:(id<ActiveCustomerManagerObjcProtocol>)sender {
     if (!self.isObserving) { return; }
     [self sendEventWithName:@"activeCustomerManagerActiveTaskDidUpdate" body:nil];
 }

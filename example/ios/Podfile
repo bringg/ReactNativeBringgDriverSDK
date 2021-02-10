@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+source 'https://cdn.cocoapods.org/'
+
 
 platform :ios, '11.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
@@ -7,6 +9,25 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 use_frameworks!
 
 target 'BringgDriverSdkIosExample' do
+
+  pod 'BringgDriverSDKObjc'
+
+  # All dependencies of the BringgDriverSDK needs to be built with the 'BUILD_LIBRARY_FOR_DISTRIBUTION' configuration set to 'YES'
+  BringgDriverSDKDependencies = [
+    'Socket.IO-Client-Swift',
+    'Starscream',
+    'libPhoneNumber-iOS',
+    'CryptoSwift',
+    'GzipSwift',
+    'Alamofire',
+    'XCGLogger',
+    'RealmSwift',
+    'ObjcExceptionBridging',
+    'Kingfisher',
+    'KeychainAccess',
+    'DeviceKit'
+  ]
+
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])  
   # Enables Flipper.
@@ -16,6 +37,13 @@ target 'BringgDriverSdkIosExample' do
   use_flipper!
   post_install do |installer|
     flipper_post_install(installer)
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        if BringgDriverSDKDependencies.include? target.name
+          config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+        end
+      end
+    end
   end
 end
 
