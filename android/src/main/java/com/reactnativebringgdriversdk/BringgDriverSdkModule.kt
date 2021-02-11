@@ -5,6 +5,7 @@ import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.ReadableArray
 import com.facebook.react.modules.core.DeviceEventManagerModule.RCTDeviceEventEmitter
 import driver_sdk.ActiveCustomerSdkFactory
 import driver_sdk.BringgSdkActiveCustomerClient
@@ -12,6 +13,7 @@ import driver_sdk.connection.NetworkResult
 import driver_sdk.content.ResultCallback
 import driver_sdk.customer.CustomerVehicle
 import driver_sdk.customer.SdkSettings
+import driver_sdk.logging.BringgLog
 import driver_sdk.models.TaskState
 import driver_sdk.models.enums.LoginResult
 import driver_sdk.models.enums.LogoutResult
@@ -25,6 +27,12 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+enum class SDKInitializeFlag {
+  avoidUsingMotion,
+  avoidUsingBluetooth,
+  enableAndroidLogcatLog
+}
+
 class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
   private var activeCustomerClient: BringgSdkActiveCustomerClient? = null
   private val isInitialized get() = activeCustomerClient != null
@@ -32,10 +40,23 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
   override fun getName() = "BringgDriverSdk"
 
   @ReactMethod
-  fun init(promise: Promise) {
+  fun init(flags: ReadableArray?, promise: Promise) {
     runOnMainThread {
+      enableLogcatLogsIfNeeded(flags)
       activeCustomerClient = ActiveCustomerSdkFactory.init(reactApplicationContext, EmptyNotificationProvider(reactApplicationContext), SdkSettings.Builder().build())
       promise.resolve()
+    }
+  }
+
+  private fun enableLogcatLogsIfNeeded(flags: ReadableArray?) {
+    val size = flags?.size() ?: 0
+    for (index in 0 until size) {
+      flags?.getString(index).let { flag ->
+        val optionalSdkInitializeFlag = SDKInitializeFlag.values().firstOrNull { it.toString() == flag }
+        if (optionalSdkInitializeFlag == SDKInitializeFlag.enableAndroidLogcatLog) {
+          BringgLog.enableLogcatLog()
+        }
+      }
     }
   }
 
@@ -137,7 +158,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
         if (result.success())
           promise.resolve()
         else
-          promise.reject(RequestFailedException("Failed to arrive to waypoint"))
+          promise.reject(RequestFailedException("Failed to arrive to waypoint " + result.resultCode))
       }
     })
   }
@@ -182,7 +203,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
         if (result.success())
           promise.resolve()
         else
-          promise.reject(RequestFailedException("Failed to leave waypoint"))
+          promise.reject(RequestFailedException("Failed to leave waypoint " + result.resultCode))
       }
     })
 

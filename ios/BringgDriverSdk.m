@@ -1,6 +1,5 @@
 #import "BringgDriverSdk.h"
 
-@import BringgDriverSDK;
 @import BringgDriverSDKObjc;
 
 @implementation BringgDriverSdk

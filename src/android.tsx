@@ -3,10 +3,11 @@ import {
   EmitterSubscription,
   NativeEventEmitter,
 } from 'react-native';
+import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
 import { Task, taskFromJSONString } from './models/task';
 
 export type BringgDriverSdkAndroidType = {
-  init(): Promise<void>;
+  init(flags: SDKInitializeFlag[] | null): Promise<void>;
   loginWithToken(token: String, secret: String, region: String): Promise<void>;
   logout(): Promise<void>;
 

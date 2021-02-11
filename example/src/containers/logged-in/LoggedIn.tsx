@@ -37,7 +37,7 @@ export default function LoggedIn() {
     null
   );
   const [isShowingParkingAndVehicleDetails, setIsShowingParkingAndVehicleDetails] = useState(false);
-  const [customerVehicle, setCustomerVehicle] = useState({save_vehicle: false});
+  const [customerVehicle, setCustomerVehicle] = useState({ save_vehicle: false });
 
   const isShowingEditorViews = isShowingEditETA || isShowingTransportType || isShowingParkingAndVehicleDetails;
 
