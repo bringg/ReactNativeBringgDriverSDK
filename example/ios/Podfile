@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 source 'https://cdn.cocoapods.org/'
+platform :ios, '12.0'
 
-
-platform :ios, '11.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -17,7 +16,6 @@ target 'BringgDriverSdkIosExample' do
     'Socket.IO-Client-Swift',
     'Starscream',
     'libPhoneNumber-iOS',
-    'CryptoSwift',
     'GzipSwift',
     'Alamofire',
     'XCGLogger',
