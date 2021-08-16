@@ -9,21 +9,21 @@ import { CustomerVehicle } from './models/customer_vehicle';
 export function iosAPIToPublicAPITransform(
   bringgDriverSdkIosType: BringgDriverSdkIosType
 ): BringgDriverSDKType {
-  const {
-    addListenerToActiveTask,
-    addListenerToLogout,
-  } = bringgDriverSdkIosType.activeCustomerManager;
+  const { addListenerToActiveTask, addListenerToLogout } =
+    bringgDriverSdkIosType.activeCustomerManager;
 
   const isLoggedInSubject = new BehaviorSubject<boolean>(false);
   const activeTaskSubject = new BehaviorSubject<Task | null>(null);
 
   const updateIsLoggedInSubject = async (): Promise<void> => {
-    const isLoggedInInitialValue = await bringgDriverSdkIosType.activeCustomerManager.isLoggedIn();
+    const isLoggedInInitialValue =
+      await bringgDriverSdkIosType.activeCustomerManager.isLoggedIn();
     isLoggedInSubject.next(isLoggedInInitialValue);
   };
 
   const updateActiveTaskSubject = async (): Promise<void> => {
-    const activeTask = await bringgDriverSdkIosType.activeCustomerManager.getActiveTask();
+    const activeTask =
+      await bringgDriverSdkIosType.activeCustomerManager.getActiveTask();
     activeTaskSubject.next(activeTask);
   };
 

@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "prepare": "bob build",
-    "prettier-check": "prettier -l src"
+    "prettier": "prettier -w src",
+    "prettier-check": "prettier -c src"
   },
   "keywords": [
     "react-native",

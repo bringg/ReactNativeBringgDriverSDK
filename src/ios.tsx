@@ -61,7 +61,8 @@ export function getIOSNativeModule(): BringgDriverSdkIosType {
   const activeCustomerManager: ActiveCustomerManagerIOSType = {
     ...ActiveCustomerManager,
     isLoggedIn: async (): Promise<boolean> => {
-      const isLoggedInNumberValue: number = await ActiveCustomerManager.isLoggedIn();
+      const isLoggedInNumberValue: number =
+        await ActiveCustomerManager.isLoggedIn();
       return isLoggedInNumberValue === 1 ? true : false;
     },
     updateWaypointETA: (eta: Date): Promise<void> => {
