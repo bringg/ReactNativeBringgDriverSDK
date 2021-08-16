@@ -10,7 +10,7 @@ pipeline {
         script {
           // package.json should not have private dependencies
           // we should be able to install dependencies without credentials
-          docker.image('bringg/node:14.17-alpine').inside() {
+          docker.image('node:14.17.5-alpine').inside() {
             sh "npm install"
             sh "npm run prettier-check"
           }
