@@ -10,6 +10,11 @@ use_frameworks!
 target 'BringgDriverSdkIosExample' do
 
   pod 'BringgDriverSDKObjc'
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+  
+  #rn_maps_path = '../node_modules/react-native-maps'
+  #pod 'react-native-google-maps', :path => rn_maps_path
 
   # All dependencies of the BringgDriverSDK needs to be built with the 'BUILD_LIBRARY_FOR_DISTRIBUTION' configuration set to 'YES'
   BringgDriverSDKDependencies = [
@@ -59,6 +64,8 @@ $static_framework = %w[
   CocoaLibEvent
   openssl-ios-bitcode
   boost-for-react-native
+  GoogleMaps
+  Google-Maps-iOS-Utils
 ]
 
 pre_install do |installer|

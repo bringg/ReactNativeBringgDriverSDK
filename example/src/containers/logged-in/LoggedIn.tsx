@@ -18,11 +18,13 @@ import {
   showHideArriveAtWaypointWithParkingAndVehicleDetailsButtonDef,
   ActionButton,
 } from '../../components/ActionButton';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import EditETAPicker from './EditETAPicker';
 import EditTransportTypePicker from './EditTransportTypePicker';
 import ParkingAndVehicleDetails from './ParkingAndVehicleDetails';
+
 
 
 export default function LoggedIn() {
@@ -114,6 +116,12 @@ export default function LoggedIn() {
 
   return (
     <Fragment>
+      <View style={styles.mapcontainer}>
+        <MapView
+          provider={PROVIDER_GOOGLE}
+          style={styles.map}
+        ></MapView>
+      </View>
       <FlatList
         data={listData}
         renderItem={(renderItem) => {
@@ -146,3 +154,12 @@ export default function LoggedIn() {
     </Fragment>
   );
 }
+
+const styles = StyleSheet.create({
+  mapcontainer: {
+  },
+  map: {
+    width: '100%',
+    height: 200,
+  },
+});
