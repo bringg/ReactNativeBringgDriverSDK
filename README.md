@@ -129,7 +129,7 @@ yarn android
 Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 [More details](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-## Trubleshooting
+## Troubleshooting
 
 #### Build Issue with FBReactNativeSpec
 
