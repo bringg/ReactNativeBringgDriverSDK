@@ -26,6 +26,35 @@ cd ios && pod install && cd ..
 ```
 
 4. [Add capabilities and privacy usage description](https://github.com/bringg/Bringg-iOS-DriverSDK#capabilities)
+5. Set `BUILD_LIBRARY_FOR_DISTRIBUTION` for Pods required by the BringgDriverSDK
+
+```
+# All dependencies of the BringgDriverSDK needs to be built with the 'BUILD_LIBRARY_FOR_DISTRIBUTION' configuration set to 'YES'
+BringgDriverSDKDependencies = [
+  'Socket.IO-Client-Swift',
+  'Starscream',
+  'libPhoneNumber-iOS',
+  'GzipSwift',
+  'Alamofire',
+  'XCGLogger',
+  'RealmSwift',
+  'ObjcExceptionBridging',
+  'Kingfisher',
+  'KeychainAccess',
+  'DeviceKit'
+]
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      if BringgDriverSDKDependencies.include? target.name
+        config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+      end
+    end
+  end
+end
+
+```
 
 #### Removing Flipper
 
