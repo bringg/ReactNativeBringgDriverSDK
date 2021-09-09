@@ -129,7 +129,23 @@ yarn android
 Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 [More details](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
-## Running with xcode 11.3.1 (iOS)
+## Trubleshooting
+
+#### Build Issue with FBReactNativeSpec
+
+A known issue with React NAtive dependecy. reference:
+
+https://github.com/facebook/react-native/issues/31034
+
+When you get this error:
+```
+error: Cycle in dependencies between targets 'BringgDriverSdkIosExample' and 'FBReactNativeSpec'; 
+building could produce unreliable results.
+```
+
+On the example app, the solution is to go to the Pods/FBReactNativeSpec target in Xcode, and move the [CP-User] build script above the Headers.
+
+#### Running with xcode 11.3.1 (iOS)
 The Native iOS SDK is precompiled - when using a swift version that is not the latest, you will need to do another step in order to use a native SDK that was compiled with the same Swift version that you are using.
 
 In podfile add to your application target the following pods:
