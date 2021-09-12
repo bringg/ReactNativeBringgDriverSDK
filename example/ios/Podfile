@@ -5,7 +5,7 @@ platform :ios, '12.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-use_frameworks!
+# use_frameworks!
 
 target 'BringgDriverSdkIosExample' do
 
@@ -31,6 +31,16 @@ target 'BringgDriverSdkIosExample' do
     'DeviceKit'
   ]
 
+  BringgDriverSDKDependencies2 = [
+    'Realm',
+    'RealmSwift'    
+  ]
+
+  RequiredDynamic = [
+    'glog',    
+    'DoubleConversion',    
+  ]
+
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])  
   # Enables Flipper.
@@ -52,29 +62,41 @@ end
 
 #  https://github.com/facebook/flipper/issues/254
 
-$static_framework = %w[
-  FlipperKit
-  Flipper
-  Flipper-Folly
-  CocoaAsyncSocket
-  ComponentKit
-  Flipper-PeerTalk
-  Flipper-RSocket
-  YogaKit
-  CocoaLibEvent
-  openssl-ios-bitcode
-  boost-for-react-native
-  GoogleMaps
-  Google-Maps-iOS-Utils
-]
+# $static_framework = %w[
+#   FlipperKit
+#   Flipper
+#   Flipper-Folly
+#   CocoaAsyncSocket
+#   ComponentKit
+#   Flipper-PeerTalk
+#   Flipper-RSocket
+#   YogaKit
+#   CocoaLibEvent
+#   openssl-ios-bitcode
+#   boost-for-react-native
+#   GoogleMaps
+#   Google-Maps-iOS-Utils  
+# ]
+
+
 
 pre_install do |installer|
   Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
   installer.pod_targets.each do |pod|
-    next unless $static_framework.include?(pod.name)
-
-    def pod.build_type
-      Pod::BuildType.static_library
+    if BringgDriverSDKDependencies.include?(pod.name) 
+      def pod.build_type
+        Pod::BuildType.dynamic_framework
+      end
+    end
+    if BringgDriverSDKDependencies2.include?(pod.name)
+      def pod.build_type
+        Pod::BuildType.dynamic_framework
+      end
+    end
+    if RequiredDynamic.include?(pod.name)
+      def pod.build_type
+        Pod::BuildType.dynamic_framework
+      end
     end
   end
 end
