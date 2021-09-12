@@ -1,0 +1,6 @@
+framework module react_native_bringg_driver_sdk {
+  umbrella header "react-native-bringg-driver-sdk-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,31 @@
+import { Task } from './models/task';
+import { BehaviorSubject } from 'rxjs';
+import { TransportType } from './models/transport_type';
+import { CustomerVehicle } from './models/customer_vehicle';
+import { SDKInitializeFlag } from './consts/SDKInitializeFlag';
+declare const initBringgDriverSDK: (flags?: SDKInitializeFlag[] | undefined) => Promise<void>, activeCustomerManager: ActiveCustomerManagerType;
+export declare type ActiveCustomerManagerType = {
+    isLoggedIn: BehaviorSubject<boolean>;
+    loginWithToken(token: string, secret: string, region: string): Promise<void>;
+    logout(): Promise<void>;
+    startTask(taskId: number): Promise<void>;
+    arriveAtWaypoint(): Promise<void>;
+    arriveAtWaypointWithCustomerVehicle(customerVehicle: CustomerVehicle): Promise<void>;
+    leaveWaypoint(): Promise<void>;
+    updateWaypointETA(eta: Date): Promise<void>;
+    activeTask: BehaviorSubject<Task | null>;
+    setUserTransportType(transportType: TransportType): Promise<void>;
+};
+export declare type BringgDriverSDKType = {
+    initBringgDriverSDK: (flags?: SDKInitializeFlag[]) => Promise<void>;
+    activeCustomerManager: ActiveCustomerManagerType;
+};
+export { Task, TaskStatus } from './models/task';
+export { Waypoint } from './models/waypoint';
+export { Contact } from './models/contact';
+export { Customer } from './models/customer';
+export { TaskInventory } from './models/task_inventory';
+export { TaskNote } from './models/task_note';
+export { TransportType } from './models/transport_type';
+export { SDKInitializeFlag } from './consts/SDKInitializeFlag';
+export { initBringgDriverSDK, activeCustomerManager };

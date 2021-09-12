@@ -1,0 +1,24 @@
+{
+  "name": "react-native-bringg-driver-sdk",
+  "version": "1.14.2",
+  "summary": "A React Native wrapper for the native (iOS and Android) Bringg driver SDKs (currently supporting the active customer use case)",
+  "homepage": "https://github.com/bringg/ReactNativeBringgDriverSDK#readme",
+  "license": "CC-BY-NC-SA-4.0",
+  "authors": "Bringg <bringg-ios-developers@bringg.com> (https://www.bringg.com)",
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source": {
+    "git": "https://github.com/bringg/ReactNativeBringgDriverSDK.git",
+    "tag": "1.14.2"
+  },
+  "source_files": "ios/**/*.{h,m,mm}",
+  "dependencies": {
+    "React": [
+
+    ],
+    "BringgDriverSDKObjc": [
+      "1.122.0"
+    ]
+  }
+}
