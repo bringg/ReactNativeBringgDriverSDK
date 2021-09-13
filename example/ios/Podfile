@@ -25,16 +25,13 @@ target 'BringgDriverSdkIosExample' do
     'Alamofire',
     'XCGLogger',
     'RealmSwift',
+    'Realm',
     'ObjcExceptionBridging',
     'Kingfisher',
     'KeychainAccess',
     'DeviceKit'
   ]
 
-  BringgDriverSDKDependencies2 = [
-    'Realm',
-    'RealmSwift'    
-  ]
 
   RequiredDynamic = [
     'glog',    
@@ -87,12 +84,7 @@ pre_install do |installer|
       def pod.build_type
         Pod::BuildType.dynamic_framework
       end
-    end
-    if BringgDriverSDKDependencies2.include?(pod.name)
-      def pod.build_type
-        Pod::BuildType.dynamic_framework
-      end
-    end
+    end    
     if RequiredDynamic.include?(pod.name)
       def pod.build_type
         Pod::BuildType.dynamic_framework
