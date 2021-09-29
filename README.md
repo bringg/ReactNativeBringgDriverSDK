@@ -18,7 +18,7 @@ yarn add @bringg/react-native-bringg-driver-sdk
 
 1. Change minimum iOS version to 12. This should be done in the `Podfile` and on the target in the project settings in `Xcode`.
 2. Add `use_frameworks!` to `Podfile`.
-   When adding `use_frameworks!`, if you are using `Flipper` you will need to either [disable](#removing-flipper) it or [change linking to static libraries](#static-library-linking-to-keep-flipper-and-use_frameworks).
+   When adding `use_frameworks!`, if you are using `Flipper` you will need to either [disable](#removing-flipper) it or [change linking to static libraries](#static-library-linking-to-keep-flipper-and-use_frameworks). If you can not use `use_frameworks!` in your Podfile, please see item #6
 3. Perform a `pod install`
 
 ```bash
@@ -54,6 +54,21 @@ post_install do |installer|
   end
 end
 
+```
+
+6. (Optional) If you can not use `use_frameworks!` in your Podfile, please add the following code to your Podfile to configure all Bringg dependencies as dynamic frameworks.
+
+```
+pre_install do |installer|
+    Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+    installer.pod_targets.each do |pod|
+      if BringgDriverSDKDependencies.include?(pod.name) 
+        def pod.build_type
+          Pod::BuildType.dynamic_framework
+        end
+      end          
+    end
+  end
 ```
 
 #### Removing Flipper
