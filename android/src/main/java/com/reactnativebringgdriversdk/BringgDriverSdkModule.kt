@@ -220,7 +220,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
       return
     }
 
-    activeCustomerClient?.getActiveCustomerActions()?.updateWaypointEta(Date(), object : ResultCallback<UpdateOperationResult> {
+    activeCustomerClient?.getActiveCustomerActions()?.updateWaypointEta(date, object : ResultCallback<UpdateOperationResult> {
       override fun onResult(result: UpdateOperationResult) {
         if (result.isSuccessful)
           promise.resolve()
