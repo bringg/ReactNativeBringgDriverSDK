@@ -26,6 +26,7 @@ import driver_sdk.tasks.start.StartTaskResult
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import java.util.TimeZone
 
 enum class SDKInitializeFlag {
   avoidUsingMotion,
@@ -267,7 +268,7 @@ class BringgDriverSdkModule(reactContext: ReactApplicationContext) : ReactContex
 // extensions
 fun Promise.resolve() = resolve(null)
 fun String.toDate() = try {
-  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).parse(this)
+  SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault()).apply { timeZone = TimeZone.getTimeZone("UTC") }.parse(this)
 } catch (e: Exception) {
   null
 }
