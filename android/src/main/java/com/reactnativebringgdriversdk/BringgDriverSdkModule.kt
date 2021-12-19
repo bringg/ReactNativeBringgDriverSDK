@@ -24,7 +24,6 @@ import driver_sdk.tasks.LeaveWaypointResult
 import driver_sdk.tasks.UpdateOperationResult
 import driver_sdk.tasks.start.StartTaskResult
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
 import java.util.TimeZone
 
