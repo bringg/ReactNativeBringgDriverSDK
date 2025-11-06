@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@bringg/react-native-bringg-driver-sdk": "file:..",
-    "@react-native-community/datetimepicker": "^2.4.0",
+    "@react-native-community/datetimepicker": "^8.5.0",
     "react": "^17.0.1",
     "react-native": "^0.64.2"
   },
